@@ -1,0 +1,11 @@
+space = 50
+print('*'*space)
+print('SUME CALCULATOR'.center(space))
+print('*'*space)
+print('This is a program to make a sume of two numbers!!!'.center(space))
+print('please enter only numeric values:\n'.center(space))
+num1 = float(input('enter a number:\n'.center(space)))
+num2 = float(input('enter other number:\n'.center(space)))
+print(f"{'='*30}".center(space))
+print(f'Sume of {num1} + {num2} is:'.center(space))
+print(f'{num1+num2}'.center(space))
