@@ -1,0 +1,47 @@
+.Header {
+  background-color: #2c3e50; /* Background color for the header */
+  color: #ecf0f1; /* Text color */
+  padding: 20px;
+  text-align: center;
+}
+
+.Header h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.Header p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  background-color: #3498db;
+  color: #ecf0f1;
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block; /* Adjusted property to wrap only the text */
+}
+
+.nav {
+  margin-top: 10px;
+}
+
+.ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.li a {
+  text-decoration: none;
+  color: #ecf0f1;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.li a:hover {
+  color: #3498db; /* Color on hover */
+}

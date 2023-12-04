@@ -1,45 +1,51 @@
-import React, {useState} from "react";
+import React, { useState } from 'react';
+import Header from './components/Header';
+import logo from './logo.svg';
 import './App.css';
-import Header from "./components/Header";
-import Agenda from "./components/Agenda";
-import Login from "./components/Login";
-import Directory from "./components/Directory";
-import PhoneBook from "./components/PhoneBook";
-import { Routes, Route, Navigate } from "react-router-dom";
 
-function App() {
-  var today = new Date();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const App = () => {
+  const [today] = useState(new Date());
+  const [name] = useState("Santiago");
+  const [surname] = useState("Diaz");
 
-  function changeLoggedState(){
-      setIsLoggedIn(!isLoggedIn);
-  }
+  const greeting = () => {
+    const currentHour = today.getHours();
+    const greetingStyles = {
+      color: currentHour < 12 ? "blue" : currentHour < 18 ? "green" : "red",
+      fontSize: "20px",
+      border: "1px solid black",
+      background: currentHour < 12 ? "skyblue" : currentHour < 18 ? "#975408" : "green",
+    };
 
-  function CheckLogStatus() {
-    return isLoggedIn ?  (<Directory listener={changeLoggedState}  /> ):
-    (<Login listener={changeLoggedState} /> );
+    const greetingMessage =
+      currentHour < 12 ? "Good morning" : currentHour < 13 ? "Good afternoon" : "Good night";
 
-  }
+    return <h1 style={greetingStyles}>{greetingMessage}</h1>;
+  };
 
+  console.log("Render Called!!!");
 
   return (
     <div className="App">
-      <CheckLogStatus component={Header}/>
-      <Routes>
-        <Route path='/' elements={isLoggedIn ? ( <Navigate to='/directory' />) : (
-          <Login listener={changeLoggedState} />
-        )} />
-        <Route path='/directory' elements={<CheckLogStatus component={Directory} />} />
-        <Route path='/phone' elements={<CheckLogStatus component={PhoneBook} />} />
-        <Route path='/Agenda' elements={<CheckLogStatus component={Agenda} />} />
-
-      </Routes>
-      {
-     
-}
-<p>Copyright {today.getFullYear()}</p>
+      <Header 
+        today={today} 
+        name={name} 
+        surname={surname} 
+        greeting={greeting} />
+      <img src={logo} className="App-logo" alt="logo" />
+      <p>
+        Edit <code>src/App.js</code> and save to reload.
+      </p>
+      <a
+        className="App-link"
+        href="https://reactjs.org"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Learn React
+      </a>
     </div>
   );
-}
+};
 
-export default App;
+export default App;

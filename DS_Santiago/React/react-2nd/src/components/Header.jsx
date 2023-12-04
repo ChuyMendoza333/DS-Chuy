@@ -1,55 +1,27 @@
-import React from "react"
+// Header.js
 import Picture from "./Picture";
-import { Link } from "react-router-dom";
+import React from 'react';
+import classes from '../public/Header.module.css';
 
-function Header(props){
-    var name="Santiago";
-  var surname="Perez";
-  var today= new Date();
+const Header = (props) => {
+  const { name, surname, greeting } = props;
 
-  let greeting;
+  return (
+    <div className={classes.Header}>
+      {greeting()}
+      <p>My name is {name} {surname}</p>
+      <nav className={classes.nav}>
+        <ul className={classes.ul}>
+          <li className={classes.li}><a href="/">Home</a></li>
+          <li className={classes.li}><a href="/directory">Directory</a></li>
+          <li className={classes.li}><a href="/agenda">Agenda</a></li>
+          <li className={classes.li}><a href="/phone">Phone</a></li>
+          <li className={classes.li}><a href="/" onClick={props.login}>Login</a></li>
+          {/* Render the Login component when the Login link is clicked */}
+        </ul>
+      </nav>
+    </div>
+  );
+};
 
- 
-
-  const customStyle={
-    color: "navy",
-    fontSize: "20px",
-    border: "1px solid black",
-  };
-
-  today.setHours(20);
-
-  var currentTime= today.getHours();
-  if(currentTime<12){
-    greeting="Good morning";
-    customStyle.background="yellow";
-  } else if(currentTime<18){
-    greeting="Good afternoon";
-    customStyle.background="orange";
-  } else{
-    greeting="Good night";
-    customStyle.background="white";
-  }
-
-    function logOut(){
-      props.listener();
-    }
-    return(
-        <div className='container'>
-            <h1 style={customStyle}>{greeting}</h1>
-            <p>My name is {name + " " + surname}</p>
-            <Picture />
-            <nav className="navbar navbar-expand-lg bg-light" >
-              <u1 className="navbar-nav mr-auto">
-                <li className="nav-link"><Link to="/">Home</Link></li>
-                <li className="nav-item"><Link to ='/directory'>Directory</Link></li>
-                <li className="nav-item"><Link to ='/agenda'>Agenda</Link></li>
-                <li className="nav-link"><Link to ='/phone'>Phone</Link></li>
-                <li><Link to ='/' onClick={logOut} className='btn btn-ouline-succes my-2 my-sm-0'>Logout</Link> </li>
-              </u1>
-            </nav>
-        </div>
-    )
-}
-
-export default Header;
+export default Header;
